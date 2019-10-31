@@ -408,6 +408,7 @@ class Mario(Sprite):
                     pygame.mixer.Channel(2).play(music.pup)
                 if item.type == "coin":
                     self.ai_settings.coins += 1
+                    self.ai_settings.high_score -= 800
                     self.scores.prep_coins()
                     pygame.mixer.Channel(2).play(music.coin)
                 if item.type == "star":
