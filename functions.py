@@ -127,6 +127,7 @@ def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies, moni
     if mario.state == "next!" and monitor.cur == 2:
         new_level(mario, g_blocks, bg_blocks, enemies, chunks)
         monitor.cur = 3
+        mario.state = mario.next_level 
         music.normal = True
         music.normal_playing = False
 
