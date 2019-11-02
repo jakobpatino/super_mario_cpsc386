@@ -43,6 +43,7 @@ def run_game():
         music.check_dies(mario)
         music.check_win(mario)
         music.change_bg_music()
+        print(mario.next_level)
 
         gf.update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies, monitor,
                          chunks, items, scores, music)

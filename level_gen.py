@@ -56,7 +56,7 @@ class Chunk:
                     if col == "8":
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/ground_tiles/brick_4.bmp",
-                                        self.g_blocks, x, y, 400, "reg")
+                                        self.g_blocks, x, y, 400, "bricks")
                     if col == "9":
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/ground_tiles/pipe_15.bmp",
@@ -171,13 +171,10 @@ class Chunk:
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/bg_tiles/pole.bmp",
                                         self.g_blocks, x, y, 400, "invs")
-                        # change type
                     if col == "?":
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/interactible/qblock_used_1.bmp",
                                         self.g_blocks, x, y, 400, "hidden")
-
-                        # change type?
                     if col == "@":
                         create_enemy(self.ai_settings, self.screen, self.g_blocks,
                                      self.bg_blocks, mario, self.enemies, "goomba", x, y, 400, self.items, scores)
@@ -189,6 +186,34 @@ class Chunk:
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/bg_tiles/pole.bmp",
                                         self.g_blocks, x, y, 400, "winner")
+                    if col == "~":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/interactible/qblock_4.bmp",
+                                        self.g_blocks, x, y, 400, "qcoin2")
+                    if col == "`":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/interactible/qblock_4.bmp",
+                                        self.g_blocks, x, y, 400, "pup2")
+                    if col == "+":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/ground_tiles/brick_4.bmp",
+                                        self.g_blocks, x, y, 400, "bcoin2")
+                    if col == "-":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/ground_tiles/brick_4.bmp",
+                                        self.g_blocks, x, y, 400, "star2")
+                    if col == "_":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/interactible/bar.bmp",
+                                        self.g_blocks, x, y, 400, "reg")
+                    if col == ")":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/ground_tiles/brick_4.bmp",
+                                        self.g_blocks, x, y, 400, "pup3")
+                    if col == "(":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/ground_tiles/brick_4.bmp",
+                                        self.g_blocks, x, y, 400, "1up2")
                     x += 48
                 y += 48
                 x = left

@@ -150,6 +150,7 @@ def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies, moni
         monitor.update(monitor.level_list, scores)
     elif monitor.cur == 3:
         monitor.update(monitor.level_list2, scores)
+        mario.state = mario.next_level
         ai_settings.level = 2
         scores.prep_level()
 

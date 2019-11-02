@@ -56,6 +56,7 @@ class Mario(Sprite):
         self.temp_go = 0
         self.walk_an = "r"
         self.star_power = False
+        self.next_level = "reg"
 
     def go_left(self):
         self.change_x -= self.fric
@@ -308,6 +309,7 @@ class Mario(Sprite):
                     self.state = "next!"
 
                 if block.type_ == "invs":
+                    self.next_level = self.state
                     if self.state == "fire":
                         self.state = "flagf"
                     if self.state == "super":
@@ -504,7 +506,8 @@ class Mario(Sprite):
             self.image_index = self.image_
 
     def cur_item(self, block, music, mario):
-        if block.type_ == "pup" and self.state == "reg":
+        if (block.type_ == "pup" or block.type_ == "pup2" or block.type_ == "pup3") \
+                and self.state == "reg":
             if self.dir_face == "right":
                 left = False
                 right = True
@@ -515,31 +518,32 @@ class Mario(Sprite):
                         "mushroom", float(block.rect.x) + 25,
                         block.rect.bottom - 60,
                         float(block.rect.x), left, right)
-        if block.type_ == "pup" and (self.state == "super" or self.state == "fire"):
+        if (block.type_ == "pup" or block.type_ == "pup2" or block.type_ == "pup3") \
+                and (self.state == "super" or self.state == "fire"):
             create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
                         "fireflower", float(block.rect.x) + 25,
                         block.rect.bottom - 30,
                         float(block.rect.x), False, False)
 
-        if block.type_ == "qcoin":
+        if block.type_ == "qcoin" or block.type_ == "qcoin2":
             create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
                         "coin", float(block.rect.x) + 25,
                         block.rect.bottom - 30,
                         float(block.rect.x), False, False)
 
-        if block.type_ == "hidden":
+        if block.type_ == "hidden" or block.type_ == "1up2":
             create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
                         "1upshroom", float(block.rect.x) + 25,
                         block.rect.bottom - 30,
                         float(block.rect.x), False, True)
 
-        if block.type_ == "bcoin":
+        if block.type_ == "bcoin" or block.type_ == "bcoin2":
             create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
                         "coin", float(block.rect.x) + 25,
                         block.rect.bottom - 30,
                         float(block.rect.x), False, False)
 
-        if block.type_ == "star":
+        if block.type_ == "star" or block.type_ == "star2":
             create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
                         "star", float(block.rect.x) + 25,
                         block.rect.bottom - 60,

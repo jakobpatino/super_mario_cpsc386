@@ -55,14 +55,25 @@ class Blocks(Sprite):
                 self.type_ = "v"
                 self.image = pygame.image.load("assets/interactible/qblock_used_1.bmp")
                 pygame.mixer.Channel(2).play(music.pup_spawn)
+            elif self.type_ == "pup2" or self.type_ == "pup3" or self.type_ == "star2":
+                self.type_ = "v"
+                self.image = pygame.image.load("assets/interactible/qblock_used_2.bmp")
+                pygame.mixer.Channel(2).play(music.pup_spawn)
 
             elif self.type_ == "qcoin" or self.type_ == "bcoin":
                 self.type_ = "v"
                 self.image = pygame.image.load("assets/interactible/qblock_used_1.bmp")
                 pygame.mixer.Channel(2).play(music.coin)
 
-            elif self.type_ == "hidden" or self.type_ == "u":
+            elif self.type_ == "qcoin2" or self.type_ == "bcoin2":
+                self.type_ = "v"
+                self.image = pygame.image.load("assets/interactible/qblock_used_2.bmp")
+                pygame.mixer.Channel(2).play(music.coin)
+
+            elif self.type_ == "hidden" or self.type_ == "1up2" or self.type_ == "u":
                 pygame.mixer.Channel(2).play(music.pup_spawn)
+                if self.type_ == "1up2":
+                    self.image = pygame.image.load("assets/interactible/qblock_used_2.bmp")
                 self.type_ = "v"
 
             else:
