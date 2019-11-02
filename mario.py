@@ -56,6 +56,8 @@ class Mario(Sprite):
         self.temp_go = 0
         self.walk_an = "r"
         self.star_power = False
+        self.next_level = "reg"
+
 
     def go_left(self):
         self.change_x -= self.fric
@@ -308,6 +310,7 @@ class Mario(Sprite):
                     self.state = "next!"
 
                 if block.type_ == "invs":
+                    self.next_level = self.state
                     if self.state == "fire":
                         self.state = "flagf"
                     if self.state == "super":
