@@ -91,7 +91,7 @@ class Enemy(Sprite):
             self.jump_scaler = 0
 
         ff = 2
-        if self.state == "active" and self.state != "dead" and self.type != "plant" and self != "plant2":
+        if self.state == "active" and self.state != "dead" and self.type != "plant" and self.type != "plant2":
             if self.mov_right:
                 self.fric = ff
             if self.mov_left:

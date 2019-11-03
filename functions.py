@@ -121,7 +121,8 @@ def new_level(mario, g_blocks, bg_blocks, enemies, chunks):
         chunks.remove(el)
 
 
-def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies, monitor, chunks, items, scores, music):
+def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies,
+                  monitor, chunks, items, scores, music):
     screen.fill(ai_settings.bg_color)
 
     if mario.state == "next!" and monitor.cur == 2:
@@ -179,6 +180,10 @@ def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies, moni
         if el.image_index > 3:
             bg_blocks.remove(el)
 
+    for enemy in enemies:
+        enemy.blitme()
+        enemy.update(music)
+
     for el in g_blocks:
         el.blitme()
         el.update_frame()
@@ -190,10 +195,6 @@ def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies, moni
     for chunk in chunks:
         if chunk.check_edge < 1:
             chunks.remove(chunk)
-
-    for enemy in enemies:
-        enemy.blitme()
-        enemy.update(music)
 
     for item in items:
         item.blitme()

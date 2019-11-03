@@ -53,7 +53,7 @@ class Monitor:
             "000000000000000",
             "000000000000000",
             "0u000tytut00000",
-            "00000000000000[",
+            "000000000000000",
             "000000000000023",
             "0000000@0000054",
             "111111111111111",
@@ -1465,13 +1465,13 @@ class Monitor:
             self.pos = 0
             self.cur = 2
             for ll in level_list:
-                g1_1_2 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, ll,
-                               self.enemies, self.items)
+                g1_1_2 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks,
+                               ll, self.enemies, self.items)
                 g1_1_2.gen(chck, "g", scores)
                 g1_1_2.check_edge = chck
 
-                bg1_1_2 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self.level_listbg[num],
-                                self.enemies, self.items)
+                bg1_1_2 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks,
+                                self.level_listbg[num], self.enemies, self.items)
                 bg1_1_2.gen(chck, "bg", scores)
                 bg1_1_2.check_edge = chck
                 chck += 720
@@ -1483,13 +1483,13 @@ class Monitor:
             chck = 0
             num = 0
             for ll in level_list:
-                g1_1_2 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, ll,
-                               self.enemies, self.items)
+                g1_1_2 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks,
+                               ll, self.enemies, self.items)
                 g1_1_2.gen(chck, "g", scores)
                 g1_1_2.check_edge = chck
 
-                bg1_1_2 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self.level_listbg2[num],
-                                self.enemies, self.items)
+                bg1_1_2 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks,
+                                self.level_listbg2[num], self.enemies, self.items)
                 bg1_1_2.gen(chck, "bg", scores)
                 bg1_1_2.check_edge = chck
                 chck += 720
@@ -1506,8 +1506,8 @@ class Monitor:
                 g1_1_3.gen(chck, "g", scores)
                 g1_1_3.check_edge = chck
 
-                bg1_1_3 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self.level_listbg3[num],
-                                self.enemies, self.items)
+                bg1_1_3 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks,
+                                self.level_listbg3[num], self.enemies, self.items)
                 bg1_1_3.gen(chck, "bg", scores)
                 bg1_1_3.check_edge = chck
                 chck += 720
