@@ -45,7 +45,10 @@ class Items(Sprite):
         if self.type == "fireball":
             self.landed = False
         self.timer = Timer(self.frames_, wait=150)
-        self.image = pygame.image.load("assets/special/fire_1.bmp")
+        if self.type == "fireball":
+            self.image = pygame.image.load("assets/special/fire_1.bmp")
+        else:
+            self.image = pygame.image.load("assets/special/blank.bmp")
         self.frames_ = None
 
     def load_images(self):
@@ -80,6 +83,9 @@ class Items(Sprite):
         elif self.type == "shell_mov":
             self.image = pygame.image.load('assets/enemies/shell_1.bmp')
             self.frames_ = ['assets/enemies/shell_1.bmp', 'assets/enemies/shell_1.bmp']
+        elif self.type == "bshell_mov":
+            self.image = pygame.image.load('assets/enemies/bshell.bmp')
+            self.frames_ = ['assets/enemies/bshell.bmp', 'assets/enemies/bshell.bmp']
         elif self.type == "fireball":
             self.image = pygame.image.load('assets/special/fire_1.bmp')
             self.frames_ = ['assets/special/fire_1.bmp', 'assets/special/fire_2.bmp',
@@ -125,10 +131,10 @@ class Items(Sprite):
                 self.jump_scaler = 0
 
         if self.type == "1upshroom" or self.type == "mushroom" or self.type == "star" \
-                or self.type == "fireball" or self.type == "shell_mov":
+                or self.type == "fireball" or self.type == "shell_mov" or self.type == "bshell_mov":
             ff = 1
             max_ = 3
-            if self.type == "fireball" or self.type == "shell_mov":
+            if self.type == "fireball" or self.type == "shell_mov" or self.type == "bshell_mov":
                 max_ = 20
                 ff = 10
             if self.mov_right and self.fric < max_:

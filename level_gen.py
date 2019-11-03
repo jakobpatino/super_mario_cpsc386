@@ -183,6 +183,18 @@ class Chunk:
                     if col == "#":
                         create_enemy(self.ai_settings, self.screen, self.g_blocks,
                                      self.bg_blocks, mario, self.enemies, "koopa", x, y, 400, self.items, scores)
+                    if col == "[":
+                        create_enemy(self.ai_settings, self.screen, self.g_blocks,
+                                     self.bg_blocks, mario, self.enemies, "plant", x, y + 30, 400, self.items, scores)
+                    if col == "}":
+                        create_enemy(self.ai_settings, self.screen, self.g_blocks,
+                                     self.bg_blocks, mario, self.enemies, "plant2", x, y + 30, 400, self.items, scores)
+                    if col == "]":
+                        create_enemy(self.ai_settings, self.screen, self.g_blocks,
+                                     self.bg_blocks, mario, self.enemies, "bgoomba", x, y, 400, self.items, scores)
+                    if col == "{":
+                        create_enemy(self.ai_settings, self.screen, self.g_blocks,
+                                     self.bg_blocks, mario, self.enemies, "bkoopa", x, y, 400, self.items, scores)
                     if col == "=":
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/bg_tiles/pole.bmp",

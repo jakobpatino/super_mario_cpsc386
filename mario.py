@@ -383,14 +383,29 @@ class Mario(Sprite):
                         create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self,
                                     self.items, "shell_mov", enemy.rect.right, enemy.rect.bottom,
                                     enemy.rect.center, False, True)
+                        pygame.mixer.Channel(3).play(music.stomp)
                         enemy.kill()
                     elif self.dir_face == "left":
                         create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self,
                                     self.items, "shell_mov", enemy.rect.left, enemy.rect.bottom,
                                     enemy.rect.center, True, False)
+                        pygame.mixer.Channel(3).play(music.stomp)
+                        enemy.kill()
+                elif enemy.type == "bshell":
+                    if self.dir_face == "right":
+                        create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self,
+                                    self.items, "bshell_mov", enemy.rect.right, enemy.rect.bottom,
+                                    enemy.rect.center, False, True)
+                        pygame.mixer.Channel(3).play(music.stomp)
+                        enemy.kill()
+                    elif self.dir_face == "left":
+                        create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self,
+                                    self.items, "bshell_mov", enemy.rect.left, enemy.rect.bottom,
+                                    enemy.rect.center, True, False)
+                        pygame.mixer.Channel(3).play(music.stomp)
                         enemy.kill()
 
-                elif enemy.type != "shell":
+                elif enemy.type != "shell" and enemy.type != "bshell":
                     if self.state == "reg":
                         self.death_blow = True
                     elif self.state == "fire":

@@ -193,7 +193,7 @@ def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies, moni
 
     for enemy in enemies:
         enemy.blitme()
-        enemy.update()
+        enemy.update(music)
 
     for item in items:
         item.blitme()
