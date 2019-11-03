@@ -125,8 +125,17 @@ def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies, moni
     screen.fill(ai_settings.bg_color)
 
     if mario.state == "next!" and monitor.cur == 2:
+        mario.temp_go = 0
         new_level(mario, g_blocks, bg_blocks, enemies, chunks)
         monitor.cur = 3
+        music.normal = False
+        music.normal_playing = False
+        music.underg = True
+        music.underg_playing = False
+    if mario.state == "next!" and monitor.cur == 4:
+        mario.temp_go = 0
+        new_level(mario, g_blocks, bg_blocks, enemies, chunks)
+        monitor.cur = 5
         music.normal = True
         music.normal_playing = False
 
@@ -153,6 +162,13 @@ def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies, moni
         mario.state = mario.next_level
         ai_settings.level = 2
         scores.prep_level()
+        ai_settings.reset_time(scores)
+    elif monitor.cur == 5:
+        monitor.update(monitor.level_list3, scores)
+        mario.state = mario.next_level
+        ai_settings.level = 3
+        scores.prep_level()
+        ai_settings.reset_time(scores)
 
     for el in bg_blocks:
         el.blitme()

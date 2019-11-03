@@ -1,5 +1,6 @@
 from functions import create_g_blocks
 from functions import create_bg_blocks
+from functions import create_item
 from functions import create_enemy
 import mario
 
@@ -204,8 +205,8 @@ class Chunk:
                                         self.g_blocks, x, y, 400, "star2")
                     if col == "_":
                         create_g_blocks(self.ai_settings, self.screen,
-                                        "assets/interactible/bar.bmp",
-                                        self.g_blocks, x, y, 400, "reg")
+                                        "assets/interactible/3bar.bmp",
+                                        self.g_blocks, x, y, 400, "3bar")
                     if col == ")":
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/ground_tiles/brick_4.bmp",
@@ -214,6 +215,14 @@ class Chunk:
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/ground_tiles/brick_4.bmp",
                                         self.g_blocks, x, y, 400, "1up2")
+                    if col == ":":
+                        create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
+                                    "coin1", x + 21, y + 48,
+                                    x, False, False)
+                    if col == ";":
+                        create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
+                                    "coin2", x + 21, y + 48,
+                                    x, False, False)
                     x += 48
                 y += 48
                 x = left

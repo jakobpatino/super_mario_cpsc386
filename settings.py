@@ -28,6 +28,10 @@ class Settings:
         scores.prep_time()
         scores.prep_level()
 
+    def reset_time(self, scores):
+        self.time = 400
+        scores.prep_time()
+
     def update_time(self):
         self.time_count += 1
         if self.time_count > 40 and self.time != 0:

@@ -355,6 +355,9 @@ class Mario(Sprite):
                     if block.type_ == "bricks" and (self.state == "super" or self.state == "fire"):
                         block.dead = 1
                 self.change_y = 0
+            if block.type_ == "3bar" and self.rect.bottom == block.rect.top and\
+                    block.rect.x <= self.rect.x <= block.rect.x + 144:
+                block.rect.y += 1
 
         if self.invinc > 0:
             self.invinc -= 1
@@ -408,7 +411,7 @@ class Mario(Sprite):
                     self.grow_up('assets/mario/Rsmario_stand.bmp')
                     self.state = "super"
                     pygame.mixer.Channel(2).play(music.pup)
-                if item.type == "coin":
+                if item.type == "coin" or item.type == "coin1" or item.type == "coin2":
                     self.ai_settings.coins += 1
                     self.ai_settings.high_score -= 800
                     self.scores.prep_coins()

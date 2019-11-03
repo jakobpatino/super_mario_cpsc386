@@ -60,6 +60,16 @@ class Items(Sprite):
             self.image = pygame.image.load('assets/special/coin_1.bmp')
             self.frames_ = ['assets/special/coin_1.bmp', 'assets/special/coin_2.bmp',
                             'assets/special/coin_3.bmp', 'assets/special/coin_4.bmp']
+        elif self.type == "coin1":
+            self.image = pygame.image.load('assets/special/coin_1.bmp')
+            self.frames_ = ['assets/interactible/coin_1_1.bmp', 'assets/interactible/coin_1_1.bmp',
+                            'assets/interactible/coin_1_2.bmp',
+                            'assets/interactible/coin_1_3.bmp', 'assets/interactible/coin_1_2.bmp']
+        elif self.type == "coin2":
+            self.image = pygame.image.load('assets/special/coin_1.bmp')
+            self.frames_ = ['assets/interactible/coin_2_1.bmp', 'assets/interactible/coin_2_1.bmp',
+                            'assets/interactible/coin_2_2.bmp',
+                            'assets/interactible/coin_2_3.bmp', 'assets/interactible/coin_2_2.bmp']
         elif self.type == "fireflower":
             self.image = pygame.image.load('assets/interactible/ff_1_1.bmp')
             self.frames_ = ['assets/interactible/ff_1_2.bmp', 'assets/interactible/ff_1_2.bmp',
@@ -131,7 +141,8 @@ class Items(Sprite):
                 self.fric += ff
 
         self.change_x = self.fric
-        self.calc_grav()
+        if self.type != "coin1" and self.type != "coin2":
+            self.calc_grav()
         self.rect.x += self.change_x
 
         for block in self.g_blocks:

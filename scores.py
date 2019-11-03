@@ -115,6 +115,9 @@ class Scoreboard:
         elif self.ai_settings.level == 2:
             self.level_image = self.font.render(str("1-2"), True,
                                                 self.text_color)
+        elif self.ai_settings.level == 3:
+            self.level_image = self.font.render(str("1-3"), True,
+                                                self.text_color)
         self.level_title = self.font.render("WORLD", True, self.text_color)
 
         # position on screen

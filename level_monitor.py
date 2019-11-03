@@ -16,6 +16,8 @@ class Monitor:
         self.level_listbg = []
         self.level_list2 = []
         self.level_listbg2 = []
+        self.level_list3 = []
+        self.level_listbg3 = []
         self.init_level()
         self.mario_pos = 0
         self.chunks = chunks
@@ -257,9 +259,9 @@ class Monitor:
         ]
 
         a14 = [
-            "000000000000000",
-            "000000000000000",
-            "000000000000000",
+            "000|00000000000",
+            "000|00000000000",
+            "000|00000000000",
             "000|00000000000",
             "000|00000000000",
             "000|00000000000",
@@ -401,10 +403,10 @@ class Monitor:
             "888888888888888",
             "000000000000000",
             "000000000000000",
-            "000000000000000",
+            "00000000000;;;;",
             "000000000000000",
             "000000000808888",
-            "000000000808008",
+            "0000000008;8008",
             "000000000888008",
             "0n0000000000000",
             "0n0n00000000000",
@@ -421,7 +423,7 @@ class Monitor:
             "000000088000000",
             "000000088000000",
             "0-0000088000000",
-            "08000008800000",
+            ";800000880000;;",
             "880000088880088",
             "000000000880000",
             "000000000880000",
@@ -438,7 +440,7 @@ class Monitor:
             "008800080000880",
             "008800080000880",
             "008800080000880",
-            "008800080)008-0",
+            ";;880008;)008-0",
             "888800088800880",
             "000000000000000",
             "000000000000000",
@@ -452,7 +454,7 @@ class Monitor:
             "8888888888888(8",
             "088880000000000",
             "000000000000000",
-            "000000000000000",
+            "00000000;;;;;;0",
             "000000000000000",
             "000000008888880",
             "000000008888880",
@@ -522,13 +524,13 @@ class Monitor:
             "000000000000000",
             "000000000000000",
             "000000000000000",
-            "00000___0000000",
+            "00000_000000000",
             "000000000088888",
             "0nn000000000000",
             "nnn000000000000",
             "nnn000000000000",
             "nnn000000000000",
-            "77700___0077777",
+            "77700_000077777",
             "777000000077777"
         ]
         a2_13 = [
@@ -537,14 +539,14 @@ class Monitor:
             "888000000000888",
             "000000000000000",
             "000000000000000",
-            "00000___0000000",
+            "00000_000000000",
             "000000000000000",
             "000000000000000",
             ")00000000000000",
             "000000000000000",
             "000000000088888",
             "000000000088888",
-            "00000___0088888",
+            "00000_000088888",
             "777000000077777",
             "777000000077777"
         ]
@@ -555,8 +557,8 @@ class Monitor:
             "000gf8888888888",
             "000gf8888888888",
             "000gf8888888888",
-            "000gf8888888888",
-            "000gf8888888888",
+            "000000000000000",
+            "000000000000000",
             "0abdf8888888888",
             "09cef8888888888",
             "888888888888888",
@@ -572,8 +574,8 @@ class Monitor:
             "888888888888888",
             "888888888888888",
             "888888888888888",
-            "888888888888888",
-            "888888888888888",
+            "000000000000000",
+            "000000000000000",
             "888888888888888",
             "888888888888888",
             "888888888888888",
@@ -581,6 +583,261 @@ class Monitor:
             "888888888888888",
             "777777777777777",
             "777777777777777"
+        ]
+        a2_16 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000660",
+            "000000000006660",
+            "000000000066660",
+            "000000000666660",
+            "000000006666660",
+            "000000066666660",
+            "000230666666660",
+            "000546666666660",
+            "111111111111111",
+            "111111111111111"
+        ]
+        a2_17 = [
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|0000000",
+            "0000000|000000=",
+            "00000006000000=",
+            "111111111111111",
+            "111111111111111"
+        ]
+        a2_18 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "111111111111111",
+            "111111111111111"
+        ]
+        a3_1 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "111111111111111",
+            "111111111111111"
+        ]
+        a3_2 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000:::",
+            "00000000000qrrr",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000qrrrrr",
+            "000000000000000",
+            "000000000000000",
+            "000qrrs00000000",
+            "100000000000000",
+            "100000000000000"
+        ]
+        a3_3 = [
+            "000000000000000",
+            "000000000000000",
+            "0000000::000000",
+            "00000000000000@",
+            "0000000000qrrrr",
+            "s00000000000000",
+            "000000000000000",
+            "000000000000000",
+            "00000qrrrs00000",
+            "rs0000000000000",
+            "000000000000000",
+            "000:00000000000",
+            "00qrs0000000000",
+            "000000000000000",
+            "000000000000000"
+        ]
+        a3_4 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "0@0000000000000",
+            "rs0000000000000",
+            "000000000000000",
+            "00000::000_0000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "00000000000000y",
+            "000000000000000",
+            "000000000000000",
+            "00000qrrs00000q",
+            "000000000000000"
+        ]
+        a3_5 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "::::00000000000",
+            "qrrs00000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "0000000000qrs00",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "rrrs0qrrrs00000",
+            "000000000000000"
+        ]
+        a3_6 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "00000@0000::000",
+            "0qrrrrs00000000",
+            "000000000000000",
+            "00000000000_000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000"
+        ]
+        a3_7 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000::00::000000",
+            "000000000000000",
+            "000000000000000",
+            "00000000000000q",
+            "000000000000000",
+            "0000_0000000000",
+            "000000000000000",
+            "00000000qrrs000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000"
+        ]
+        a3_8 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "rrrrrrs00000000",
+            "000000000000000",
+            "00000000000qrrs",
+            "000000000000000",
+            "000000000000000",
+            "00000000:::0000",
+            "00000000qrs0000",
+            "000000000000000"
+        ]
+        a3_9 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "::0000000000000",
+            "00000000000_000",
+            "000000000000000",
+            "000000000000000",
+            "00qrrs000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000111111",
+            "000000000111111"
+        ]
+        a3_10 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000066000000",
+            "000000066000000",
+            "000006666000000",
+            "000006666000000",
+            "000666666000000",
+            "000666666000000",
+            "000666666000000",
+            "000666666000000",
+            "111111111111111",
+            "111111111111111"
+        ]
+        a3_11 = [
+            "00|000000000000",
+            "00|000000000000",
+            "00|000000000000",
+            "00|000000000000",
+            "00|000000000000",
+            "00|000000000000",
+            "00|000000000000",
+            "00|000000000000",
+            "00|000000000000",
+            "00|000000000000",
+            "00|000000000000",
+            "00|00000=000000",
+            "00600000=000000",
+            "111111111111111",
+            "111111111111111"
+        ]
+        a3_12 = [
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "000000000000000",
+            "111111111111111",
+            "111111111111111"
         ]
         b2_1 = [
             "bbbbbbbbbbbbbbb",
@@ -630,6 +887,57 @@ class Monitor:
             "aaaaaaaaaaaaaaa",
             "aaaaaaaaaaaaaaa",
             "aaaaaaaaaaaaaaa",
+            "aaaaaaaaaaaaaaa",
+            "aaaaaaaaaaaaaaa"
+        ]
+        b2_16 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbpqqrbbbbbbb",
+            "bbbbsttubbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "aaaaaaaaaaaaaaa",
+            "aaaaaaaaaaaaaaa"
+        ]
+        b2_17 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbb3bbbbbbb",
+            "bbbbbb56bpqrbbb",
+            "bbbbbbb2bstubbb",
+            "bbbbbbb2bbbbbbb",
+            "bbbbbbb2bbbbbbb",
+            "bbbbbbb2bbbbbbb",
+            "bbbbbbb2bbbbvvv",
+            "bbbbbbb2bbbbyx1",
+            "bbbhbbb2bbbvwww",
+            "bbgkibb2bbbxxzx",
+            "bgkjlibbbbbxxax",
+            "aaaaaaaaaaaaaaa",
+            "aaaaaaaaaaaaaaa"
+        ]
+        b2_18 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbpqrbbbbbbb",
+            "bbbbbstubbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "vbbbbbbbbbbbbbb",
+            "xbbhbbbbbbbbbbb",
+            "xogkibbbbmnobbb",
             "aaaaaaaaaaaaaaa",
             "aaaaaaaaaaaaaaa"
         ]
@@ -936,11 +1244,218 @@ class Monitor:
             "aaaaaaaaaaaaaaa",
             "aaaaaaaaaaaaaaa"
         ]
+        b3_1 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbpqqrbbbbbbbb",
+            "bbbsttubbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbpqrbbb",
+            "bvvvbbbbbstubbb",
+            "byx1bbbbbbbbbbb",
+            "vwwwvbbbbbbbbbb",
+            "xxzxxbbbbbbbbbb",
+            "xxaxxbbbbbbbbbb",
+            "aaaaaaaaaaaaaaa",
+            "aaaaaaaaaaaaaaa"
+        ]
+        b3_2 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbpqqrbbbbbbbb",
+            "bbbsttubbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbb444",
+            "bbbbbbbbbbbb444",
+            "bbbbbbbbbbbb444",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbb44444",
+            "bbbbbbbbbb44444",
+            "bbbbbbbbbb44444",
+            "abbb44bbbb44444",
+            "abbb44bbbb44444"
+        ]
+        b3_3 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbb4444",
+            "bbbbbbbbpqr4444",
+            "bbbbbpqrstu4444",
+            "bbbbbbbbbbb4444",
+            "bbbbbb444bb4444",
+            "4bbbbb444bb4444",
+            "4bbbbb444bb4444",
+            "4bbbbb444bb4444",
+            "4bb4bb444bb4444",
+            "4bb4bb444bb4444"
+        ]
+        b3_4 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbpqqrbbbbb",
+            "bbbbbbsttubbbbb",
+            "4bbbbbbbbbbbbbb",
+            "4bbbbbbbbbbbbbb",
+            "4bbbbbbbbbbbpqr",
+            "4bbbbbbbbbbbstu",
+            "4bbbbbbbbbbbbbb",
+            "4bbbbbbbbbbbbbb",
+            "4pqrbbbbbbbbbbb",
+            "4stubbbbbbbbbbb",
+            "4bbbbbbbbbbbbbb",
+            "4bbbbb44bbbbbbb"
+        ]
+        b3_5 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbpqqrbbbbb",
+            "bbbbbbsttubbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "b44bbbbbbbbbbbb",
+            "b44bbbbbbbbbbbb",
+            "b44bbbbbbbbbbbb",
+            "b44bbbbbbbbbbbb",
+            "b44bbbbbbbb4bbb",
+            "b44bbbbbbbb4bbb",
+            "b44bbbbbbbb4bbb",
+            "bbbbbbbbbbb4bbb",
+            "444bbb444bb4bbb"
+        ]
+        b3_6 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbpqrb",
+            "bb4444bbpqrstub",
+            "bb4444bbstubbbb",
+            "bb4444bbbbbbbbb",
+            "bb4444bbbbbbbbb",
+            "bp4444bbbbbbbbb",
+            "bs4444bbbbbbbbb",
+            "bb4444bbbbbbbbb",
+            "bb4444bbbbbbbbb"
+        ]
+        b3_7 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbpqqrbb",
+            "bbbbbbbbbsttubb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbpqrb44bbbb",
+            "bbbbbstub44bbbb",
+            "bbbbbbbbb44bbbb"
+        ]
+        b3_8 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbpqqrbb",
+            "bbbbbbbbbsttubb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "444444bbbbbbbbb",
+            "444444bbbbbbbbb",
+            "444444bbbbbb44b",
+            "444444bbbbbb44b",
+            "444444bbbbbb44b",
+            "444444bbbbbb44b",
+            "444444bbb4bb44b"
+        ]
+        b3_9 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbp",
+            "bbbbbbbbbbbpqrs",
+            "bbbbbbbbbbbstub",
+            "bbbbbbbbbbbbbbb",
+            "bbb44bbbbbbbbbb",
+            "bbb44qrbbbbbbbb",
+            "bbb44tubbbbbbbb",
+            "bbb44bbbbbbbbbb",
+            "bbb44bbbbbbbbbb"
+        ]
+        b3_10 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbpqq",
+            "bbbbbbbbbbbbstt",
+            "bbbbbbbbbbbbbbb",
+            "qrbbbbbbbbbbbbb",
+            "tubbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbrbbbbb",
+            "bbbbbbbbbubbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb"
+        ]
+        b3_11 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bb3bbbbbvvvbpqq",
+            "r56bbbbbyx1bstt",
+            "ub2bbbbvwwwvbbb",
+            "bb2bbbbxxzxxbbb",
+            "bb2bbbbxxaxxbbb",
+            "bb2pqvvwwwwwvvv",
+            "bb2stxxxzxzxxxx",
+            "bb2bbxxxaxaxxxx",
+            "bb2bbxxxxxxxxxx",
+            "bb2bbxxzxzxzxxx",
+            "bbbbbxxaxaxaxxx",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb"
+        ]
+        b3_12 = [
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb",
+            "vvvvvvvvvvvvvvv",
+            "xxxxxxxxxxxxxxx",
+            "xxxxxxxxxxxxxxx",
+            "xxxxxxxxxxxxxxx",
+            "xxxxxxxxxxxxxxx",
+            "xxxxxxxxxxxxxxx",
+            "bbbbbbbbbbbbbbb",
+            "bbbbbbbbbbbbbbb"
+        ]
         self.level_list = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17]
         self.level_listbg = [b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17]
         self.level_list2 = [a2_1, a2_2, a2_3, a2_4, a2_5, a2_6, a2_7, a2_8, a2_9, a2_10, a2_11, a2_12,
-                            a2_13, a2_14, a2_15]
-        self.level_listbg2 = [b2_1, b2_2, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3]
+                            a2_13, a2_14, a2_15, a2_16, a2_17, a2_18]
+        self.level_listbg2 = [b2_1, b2_2, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3, b2_3,
+                              b2_3, b2_3, b2_3, b2_16, b2_17, b2_18]
+        self.level_list3 = [a3_1, a3_2, a3_3, a3_4, a3_5, a3_6, a3_7, a3_8, a3_9, a3_10, a3_11, a3_12]
+        self.level_listbg3 = [b3_1, b3_2, b3_3, b3_4, b3_5, b3_6, b3_7, b3_8, b3_9, b3_10, b3_11, b3_12]
 
     def update(self, level_list, scores):
 
@@ -977,5 +1492,23 @@ class Monitor:
                                 self.enemies, self.items)
                 bg1_1_2.gen(chck, "bg", scores)
                 bg1_1_2.check_edge = chck
+                chck += 720
+                num += 1
+
+        if self.cur == 5:
+            self.pos = 0
+            self.cur = 6
+            chck = 0
+            num = 0
+            for ll in level_list:
+                g1_1_3 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, ll,
+                               self.enemies, self.items)
+                g1_1_3.gen(chck, "g", scores)
+                g1_1_3.check_edge = chck
+
+                bg1_1_3 = Chunk(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self.level_listbg3[num],
+                                self.enemies, self.items)
+                bg1_1_3.gen(chck, "bg", scores)
+                bg1_1_3.check_edge = chck
                 chck += 720
                 num += 1

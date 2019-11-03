@@ -11,7 +11,10 @@ class Enemy(Sprite):
         self.items = items
         self.ai_settings = ai_settings
         self.scores = scores
-        self.image = pygame.image.load('assets/enemies/goomba_1.bmp')
+        if type_ == "koopa":
+            self.image = pygame.image.load('assets/enemies/koopa_1.bmp')
+        else:
+            self.image = pygame.image.load('assets/enemies/goomba_1.bmp')
         self.frames_ = ['assets/enemies/goomba_1.bmp', 'assets/enemies/goomba_2.bmp']
         self.timer = Timer(self.frames_, wait=150)
         self.rect = self.image.get_rect()
@@ -164,9 +167,9 @@ class Enemy(Sprite):
         else:
             self.change_y += 1
         if self.type == "koopa":
-            if self.rect.y >= 600 - self.rect.height and self.change_y >= 0:
+            if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
                 self.change_y = 0
-                self.rect.y = 600 - self.rect.height
+                self.rect.y = 800 - self.rect.height
         if self.type == "goomba":
             if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
                 self.change_y = 0
@@ -189,10 +192,10 @@ class Enemy(Sprite):
             self.deathTime = 10
         if self.type == "koopa":
             self.type = "shell"
-            self.frames_ = ['assets/enemies/shell_1.bmp', 'assets/enemies/shell_1.bmp']
+            self.frames_ = ['assets/enemies/shell_1_dead.bmp', 'assets/enemies/shell_1_dead.bmp']
             self.timer.reset()
         elif self.type == "shell":
-            self.frames_ = ['assets/enemies/shell_1.bmp', 'assets/enemies/shell_1.bmp']
+            self.frames_ = ['assets/enemies/shell_1_dead.bmp', 'assets/enemies/shell_1_dead.bmp']
             self.deathTime = 5
             self.timer.reset()
         self.timer.frames = self.frames_
