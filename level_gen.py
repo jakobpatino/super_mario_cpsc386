@@ -176,6 +176,10 @@ class Chunk:
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/interactible/qblock_used_1.bmp",
                                         self.g_blocks, x, y, 400, "hidden")
+                    if col == "!":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/interactible/qblock_used_2.bmp",
+                                        self.g_blocks, x, y, 400, "hidden")
                     if col == "@":
                         create_enemy(self.ai_settings, self.screen, self.g_blocks,
                                      self.bg_blocks, mario, self.enemies, "goomba", x, y, 400, self.items, scores)
@@ -195,6 +199,15 @@ class Chunk:
                     if col == "{":
                         create_enemy(self.ai_settings, self.screen, self.g_blocks,
                                      self.bg_blocks, mario, self.enemies, "bkoopa", x, y, 400, self.items, scores)
+                    if col == ">":
+                        create_enemy(self.ai_settings, self.screen, self.g_blocks,
+                                     self.bg_blocks, mario, self.enemies, "rkoopa", x, y, 400, self.items, scores)
+                    if col == "<":
+                        create_enemy(self.ai_settings, self.screen, self.g_blocks,
+                                     self.bg_blocks, mario, self.enemies, "pkoopa", x, y, 400, self.items, scores)
+                    if col == "*":
+                        create_enemy(self.ai_settings, self.screen, self.g_blocks,
+                                     self.bg_blocks, mario, self.enemies, "bowser", x, y, 400, self.items, scores)
                     if col == "=":
                         create_g_blocks(self.ai_settings, self.screen,
                                         "assets/bg_tiles/pole.bmp",
@@ -235,6 +248,34 @@ class Chunk:
                         create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
                                     "coin2", x + 21, y + 48,
                                     x, False, False)
+                    if col == "'":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/special/blank.bmp",
+                                        self.g_blocks, x, y, 400, "blank")
+                    if col == "/":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/ground_tiles/brick_5.bmp",
+                                        self.g_blocks, x, y, 400, "cbrick")
+                    if col == ",":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/interactible/qblock_used_3.bmp",
+                                        self.g_blocks, x, y, 400, "v")
+                    if col == "%":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/ground_tiles/bridge.bmp",
+                                        self.g_blocks, x, y, 400, "bridge")
+                    if col == "^":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/interactible/2bar.bmp",
+                                        self.g_blocks, x, y, 400, "2bar")
+                    if col == "&":
+                        create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
+                                    "ax", x + 21, y + 48,
+                                    x, False, False)
+                    if col == "$":
+                        create_g_blocks(self.ai_settings, self.screen,
+                                        "assets/special/toad.bmp",
+                                        self.g_blocks, x, y + 25, 400, "v")
                     x += 48
                 y += 48
                 x = left
@@ -353,6 +394,26 @@ class Chunk:
                                          "assets/special/flag_1_2.bmp",
                                          self.bg_blocks, x, y, 400, "reg")
                         # change type?
+                    elif col == "7":
+                        create_bg_blocks(self.ai_settings, self.screen,
+                                         "assets/bg_tiles/lava_wave.bmp",
+                                         self.bg_blocks, x, y, 400, "reg")
+                    elif col == "8":
+                        create_bg_blocks(self.ai_settings, self.screen,
+                                         "assets/bg_tiles/lava.bmp",
+                                         self.bg_blocks, x, y, 400, "reg")
+                    elif col == "9":
+                        create_bg_blocks(self.ai_settings, self.screen,
+                                         "assets/bg_tiles/chain.bmp",
+                                         self.bg_blocks, x, y, 400, "reg")
+                    elif col == "%":
+                        create_bg_blocks(self.ai_settings, self.screen,
+                                         "assets/bg_tiles/msg.bmp",
+                                         self.bg_blocks, x, y, 400, "reg")
+                    elif col == "^":
+                        create_bg_blocks(self.ai_settings, self.screen,
+                                         "assets/special/toad.bmp",
+                                         self.bg_blocks, x, y, 400, "reg")
                     x += 48
                 y += 48
                 x = left

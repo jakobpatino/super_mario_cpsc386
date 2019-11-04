@@ -86,10 +86,16 @@ class Items(Sprite):
         elif self.type == "bshell_mov":
             self.image = pygame.image.load('assets/enemies/bshell.bmp')
             self.frames_ = ['assets/enemies/bshell.bmp', 'assets/enemies/bshell.bmp']
+        elif self.type == "rshell_mov":
+            self.image = pygame.image.load('assets/enemies/bshell.bmp')
+            self.frames_ = ['assets/enemies/rshell.bmp', 'assets/enemies/rshell.bmp']
         elif self.type == "fireball":
             self.image = pygame.image.load('assets/special/fire_1.bmp')
             self.frames_ = ['assets/special/fire_1.bmp', 'assets/special/fire_2.bmp',
                             'assets/special/fire_3.bmp', 'assets/special/fire_4.bmp']
+        if self.type == "ax":
+            self.image = pygame.image.load('assets/interactible/ax.bmp')
+            self.frames_ = ['assets/interactible/ax.bmp']
 
         self.timer = Timer(self.frames_, wait=150)
 
@@ -131,10 +137,12 @@ class Items(Sprite):
                 self.jump_scaler = 0
 
         if self.type == "1upshroom" or self.type == "mushroom" or self.type == "star" \
-                or self.type == "fireball" or self.type == "shell_mov" or self.type == "bshell_mov":
+                or self.type == "fireball" or self.type == "shell_mov" or self.type == "bshell_mov" or\
+                self.type == "rshell_mov":
             ff = 1
             max_ = 3
-            if self.type == "fireball" or self.type == "shell_mov" or self.type == "bshell_mov":
+            if self.type == "fireball" or self.type == "shell_mov" or self.type == "bshell_mov" or\
+                    self.type == "rshell_mov":
                 max_ = 20
                 ff = 10
             if self.mov_right and self.fric < max_:
@@ -152,7 +160,7 @@ class Items(Sprite):
         self.rect.x += self.change_x
 
         for block in self.g_blocks:
-            if self.rect.colliderect(block.rect):
+            if self.rect.colliderect(block.rect) and block.type_ != "blank":
                 if self.change_x > 0 and self.rect.bottom != block.rect.top:  # right
                     self.rect.right = block.rect.left
                     self.mov_left = True
@@ -169,7 +177,7 @@ class Items(Sprite):
                         self.kill()
         self.rect.y += self.change_y
         for block in self.g_blocks:
-            if self.rect.colliderect(block.rect):
+            if self.rect.colliderect(block.rect) and block.type_ != "blank":
                 if self.change_y > 0:
                     self.rect.bottom = block.rect.top
                     self.landed = True

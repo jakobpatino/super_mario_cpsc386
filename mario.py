@@ -57,6 +57,7 @@ class Mario(Sprite):
         self.walk_an = "r"
         self.star_power = False
         self.next_level = "reg"
+        self.win = False
 
     def go_left(self):
         self.change_x -= self.fric
@@ -300,7 +301,8 @@ class Mario(Sprite):
             if self.rect.colliderect(block.rect):
                 if block.type_ == "winner":
                     self.state = "next!"
-            if self.rect.colliderect(block.rect) and not self.flag and not self.death and block.type_ != "hidden":
+            if self.rect.colliderect(block.rect) and not self.flag and not self.death and block.type_ != "hidden"\
+                    and block.type_ != "blank":
                 if self.change_x > 0 and block.type_ != "hidden":  # and self.rect.bottom != block.rect.top:
                     self.rect.right = block.rect.left
                 elif self.change_x < 0 and block.type_ != "hidden":  # and self.rect.bottom != block.rect.top:
@@ -344,7 +346,7 @@ class Mario(Sprite):
 
         self.rect.y += self.change_y
         for block in self.g_blocks:
-            if self.rect.colliderect(block.rect) and not self.death and not self.flag:
+            if self.rect.colliderect(block.rect) and not self.death and not self.flag and block.type_ != "blank":
                 if self.change_y > 0 and block.type_ != "hidden":
                     self.rect.bottom = block.rect.top
                     self.landed = True
@@ -355,7 +357,7 @@ class Mario(Sprite):
                     if block.type_ == "bricks" and (self.state == "super" or self.state == "fire"):
                         block.dead = 1
                 self.change_y = 0
-            if block.type_ == "3bar" and self.rect.bottom == block.rect.top and\
+            if (block.type_ == "3bar" or block.type_ == "2bar") and self.rect.bottom == block.rect.top and\
                     block.rect.x <= self.rect.x <= block.rect.x + 144:
                 block.rect.y += 1
 
@@ -365,13 +367,14 @@ class Mario(Sprite):
             self.star_power = False
 
         for enemy in self.enemies:
-            if self.rect.right + 720 > enemy.rect.left:
+            if self.rect.right + 900 > enemy.rect.left:
                 enemy.state = "active"
             if self.rect.colliderect(enemy.rect) and self.star_power is True:
                 enemy.kill()
 
             if self.rect.colliderect(enemy.rect) and self.death is False and self.invinc == 0:
-                if self.change_y > 0:
+                if self.change_y > 0 and enemy.type != "plant" and enemy.type != "plant2"\
+                        and enemy.type != "bowser":
                     self.rect.bottom = enemy.rect.top
                     self.change_y = -5
                     self.jumping = True
@@ -404,8 +407,21 @@ class Mario(Sprite):
                                     enemy.rect.center, True, False)
                         pygame.mixer.Channel(3).play(music.stomp)
                         enemy.kill()
+                elif enemy.type == "rshell":
+                    if self.dir_face == "right":
+                        create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self,
+                                    self.items, "rshell_mov", enemy.rect.right, enemy.rect.bottom,
+                                    enemy.rect.center, False, True)
+                        pygame.mixer.Channel(3).play(music.stomp)
+                        enemy.kill()
+                    elif self.dir_face == "left":
+                        create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self,
+                                    self.items, "rshell_mov", enemy.rect.left, enemy.rect.bottom,
+                                    enemy.rect.center, True, False)
+                        pygame.mixer.Channel(3).play(music.stomp)
+                        enemy.kill()
 
-                elif enemy.type != "shell" and enemy.type != "bshell":
+                elif enemy.type != "shell" and enemy.type != "bshell" and enemy.type != "rshell":
                     if self.state == "reg":
                         self.death_blow = True
                     elif self.state == "fire":
@@ -446,8 +462,13 @@ class Mario(Sprite):
                     self.grow_up('assets/mario/Rsmario_stand.bmp')
                     pygame.mixer.Channel(2).play(music.pup)
                     self.state = "fire"
-                if item.type != "shell_mov":
+                if item.type != "shell_mov" and item.type != "bshell_mov" and item.type != "rshell_mov":
                     self.items.remove(item)
+                if item.type == "ax":
+                    self.win = True
+                    for block in self.g_blocks:
+                        if block.type_ == "bridge":
+                            block.kill()
                 self.ai_settings.high_score += 1000
                 self.scores.prep_score()
 
@@ -456,6 +477,7 @@ class Mario(Sprite):
             self.jumping = False
             self.death = True
             self.died = True
+            self.win = False
             self.state = "dead"
             self.death_blow = False
             self.frames_ = ['assets/mario/mario_dead.bmp']
@@ -550,10 +572,16 @@ class Mario(Sprite):
                         float(block.rect.x), False, False)
 
         if block.type_ == "hidden" or block.type_ == "1up2":
-            create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
-                        "1upshroom", float(block.rect.x) + 25,
-                        block.rect.bottom - 30,
-                        float(block.rect.x), False, True)
+            if block.image_ == 'assets/interactible/qblock_used_2.bmp':
+                create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
+                            "coin", float(block.rect.x) + 25,
+                            block.rect.bottom - 30,
+                            float(block.rect.x), False, True)
+            else:
+                create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,
+                            "1upshroom", float(block.rect.x) + 25,
+                            block.rect.bottom - 30,
+                            float(block.rect.x), False, True)
 
         if block.type_ == "bcoin" or block.type_ == "bcoin2":
             create_item(self.ai_settings, self.screen, self.g_blocks, self.bg_blocks, self, self.items,

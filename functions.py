@@ -139,6 +139,14 @@ def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies,
         monitor.cur = 5
         music.normal = True
         music.normal_playing = False
+    if mario.state == "next!" and monitor.cur == 6:
+        mario.temp_go = 0
+        new_level(mario, g_blocks, bg_blocks, enemies, chunks)
+        monitor.cur = 7
+        music.normal = False
+        music.normal_playing = False
+        music.castle = True
+        music.castle_playing = False
 
     if mario.death is True and mario.rect.bottom > 10000:
         for el in items:
@@ -168,6 +176,12 @@ def update_screen(ai_settings, screen, mario, g_blocks, bg_blocks, enemies,
         monitor.update(monitor.level_list3, scores)
         mario.state = mario.next_level
         ai_settings.level = 3
+        scores.prep_level()
+        ai_settings.reset_time(scores)
+    elif monitor.cur == 7:
+        monitor.update(monitor.level_list4, scores)
+        mario.state = mario.next_level
+        ai_settings.level = 4
         scores.prep_level()
         ai_settings.reset_time(scores)
 

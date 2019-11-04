@@ -7,7 +7,7 @@ class Blocks(Sprite):
         super(Blocks, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
-        self.image_ = 'assets/block.bmp'
+        self.image_ = image
         self.image = pygame.image.load(image)
         self.rect = self.image.get_rect()
         self.rect.y = y
@@ -47,7 +47,8 @@ class Blocks(Sprite):
             self.image = self.image
 
     def blipup(self, music, mario):
-        if self.up_g == 0 and self.down_g == 0 and self.type_ != "reg" and self.type_ != "v":
+        if self.up_g == 0 and self.down_g == 0 and self.type_ != "reg" and self.type_ != "v" \
+                and self.type_ != "3bar" and self.type_ != "2bar" and self.type_ != "cbrick":
             self.up_g = 5
             self.up = True
 
@@ -71,7 +72,10 @@ class Blocks(Sprite):
                 pygame.mixer.Channel(2).play(music.coin)
 
             elif self.type_ == "hidden" or self.type_ == "1up2" or self.type_ == "u":
-                pygame.mixer.Channel(2).play(music.pup_spawn)
+                if self.image_ == 'assets/interactible/qblock_used_2.bmp':
+                    pygame.mixer.Channel(2).play(music.coin)
+                else:
+                    pygame.mixer.Channel(2).play(music.pup_spawn)
                 if self.type_ == "1up2":
                     self.image = pygame.image.load("assets/interactible/qblock_used_2.bmp")
                 self.type_ = "v"

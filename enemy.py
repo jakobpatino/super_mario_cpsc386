@@ -11,8 +11,10 @@ class Enemy(Sprite):
         self.items = items
         self.ai_settings = ai_settings
         self.scores = scores
-        if type_ == "koopa" or type_ == "bkoopa":
+        if type_ == "koopa" or type_ == "bkoopa" or type_ == "rkoopa" or type_ == "pkoopa":
             self.image = pygame.image.load('assets/enemies/koopa_1.bmp')
+        elif type_ == "bowser":
+            self.image = pygame.image.load('assets/enemies/bowser_1.bmp')
         else:
             self.image = pygame.image.load('assets/special/blank.bmp')
         self.frames_ = ['assets/enemies/goomba_1.bmp', 'assets/enemies/goomba_2.bmp']
@@ -54,6 +56,9 @@ class Enemy(Sprite):
         self.plant_up = False
         self.plant_down = True
         self.plant_count = 100
+        self.pkoopa_up = False
+        self.pkoopa_down = True
+        self.pkoopa_count = 300
 
     def go_left(self):
         self.change_x -= self.fric
@@ -90,8 +95,9 @@ class Enemy(Sprite):
         else:
             self.jump_scaler = 0
 
-        ff = 2
-        if self.state == "active" and self.state != "dead" and self.type != "plant" and self.type != "plant2":
+        ff = 1
+        if self.state == "active" and self.state != "dead" and self.type != "plant" and self.type != "plant2"\
+                and self.type != "pkoopa" and self.type != "bowser":
             if self.mov_right:
                 self.fric = ff
             if self.mov_left:
@@ -112,6 +118,19 @@ class Enemy(Sprite):
             self.plant_up = True
             self.plant_down = False
 
+        if self.type == "pkoopa" and self.pkoopa_up:
+            self.pkoopa_count += 1
+            self.rect.bottom -= 1
+        elif self.type == "pkoopa" and self.pkoopa_down:
+            self.pkoopa_count -= 1
+            self.rect.bottom += 1
+        if self.pkoopa_count == 300:
+            self.pkoopa_down = True
+            self.pkoopa_up = False
+        elif self.pkoopa_count == 0:
+            self.pkoopa_up = True
+            self.pkoopa_down = False
+
         if self.mov_left and not self.mov_right and self.state != "dead":
             self.rect.x += self.change_x
             self.dir_face = "left"
@@ -123,14 +142,20 @@ class Enemy(Sprite):
                 self.frames_ = ['assets/enemies/koopa_1.bmp', 'assets/enemies/koopa_2.bmp']
             if self.type == "bkoopa":
                 self.frames_ = ['assets/enemies/bkoopa_1.bmp', 'assets/enemies/bkoopa_2.bmp']
+            if self.type == "rkoopa":
+                self.frames_ = ['assets/enemies/rkoopa_1.bmp', 'assets/enemies/rkoopa_2.bmp']
             if self.type == "shell":
                 self.frames_ = ['assets/enemies/shell_1.bmp', 'assets/enemies/shell_1.bmp']
             if self.type == "bshell":
                 self.frames_ = ['assets/enemies/bshell.bmp', 'assets/enemies/bshell.bmp']
+            if self.type == "rshell":
+                self.frames_ = ['assets/enemies/rshell.bmp', 'assets/enemies/rshell.bmp']
             if self.type == "shell_mov":
                 self.frames_ = ['assets/enemies/shell_1.bmp', 'assets/enemies/shell_1.bmp']
             if self.type == "bshell_mov":
                 self.frames_ = ['assets/enemies/bshell.bmp', 'assets/enemies/bshell.bmp']
+            if self.type == "rshell_mov":
+                self.frames_ = ['assets/enemies/rshell.bmp', 'assets/enemies/rshell.bmp']
             if self.type == "dead":
                 self.frames_ = ['assets/enemies/goomba_stomp.bmp', 'assets/enemies/goomba_stomp.bmp']
             self.timer.frames = self.frames_
@@ -146,14 +171,20 @@ class Enemy(Sprite):
                 self.frames_ = ['assets/enemies/koopa_3.bmp', 'assets/enemies/koopa_4.bmp']
             if self.type == "bkoopa":
                 self.frames_ = ['assets/enemies/bkoopa_3.bmp', 'assets/enemies/bkoopa_4.bmp']
+            if self.type == "rkoopa":
+                self.frames_ = ['assets/enemies/rkoopa_3.bmp', 'assets/enemies/rkoopa_4.bmp']
             if self.type == "shell":
                 self.frames_ = ['assets/enemies/shell_1.bmp', 'assets/enemies/shell_1.bmp']
             if self.type == "bshell":
                 self.frames_ = ['assets/enemies/bshell.bmp', 'assets/enemies/bshell.bmp']
+            if self.type == "rshell":
+                self.frames_ = ['assets/enemies/rshell.bmp', 'assets/enemies/rshell.bmp']
             if self.type == "shell_mov":
                 self.frames_ = ['assets/enemies/shell_1.bmp', 'assets/enemies/shell_1.bmp']
             if self.type == "bshell_mov":
                 self.frames_ = ['assets/enemies/bshell.bmp', 'assets/enemies/bshell.bmp']
+            if self.type == "rshell_mov":
+                self.frames_ = ['assets/enemies/rshell.bmp', 'assets/enemies/rshell.bmp']
             if self.type == "dead":
                 self.frames_ = ['assets/enemies/goomba_stomp.bmp', 'assets/enemies/goomba_stomp.bmp']
 
@@ -161,11 +192,16 @@ class Enemy(Sprite):
             self.frames_ = ['assets/enemies/pplant_3.bmp', 'assets/enemies/pplant_4.bmp']
         if self.type == "plant2":
             self.frames_ = ['assets/enemies/pplant_1.bmp', 'assets/enemies/pplant_2.bmp']
+        if self.type == "pkoopa":
+            self.frames_ = ['assets/enemies/pkoopa_1.bmp', 'assets/enemies/pkoopa_2.bmp']
+        if self.type == "bowser":
+            self.frames_ = ['assets/enemies/bowser_1.bmp', 'assets/enemies/bowser_2.bmp',
+                            'assets/enemies/bowser_3.bmp', 'assets/enemies/bowser_4.bmp']
 
         self.timer.frames = self.frames_
 
         self.change_x = self.fric
-        if self.type != "plant" and self.type != "plant2":
+        if self.type != "plant" and self.type != "plant2" and self.type != "pkoopa":
             self.calc_grav()
         self.rect.x += self.change_x
 
@@ -192,10 +228,11 @@ class Enemy(Sprite):
 
         for item in self.items:
             if self.rect.colliderect(item.rect) and self.state != "dead" and\
-                    (item.type == "fireball" or item.type == "shell_mov" or item.type == "bshell_mov"):
+                    (item.type == "fireball" or item.type == "shell_mov" or item.type == "bshell_mov"
+                     or item.type == "rshell_mov"):
                 self.kill()
                 pygame.mixer.Channel(3).play(music.stomp)
-                if item.type != "shell_mov" and item.type != "bshell_mov":
+                if item.type != "shell_mov" and item.type != "bshell_mov" and item.type != "rshell_mov":
                     item.kill()
 
                 self.ai_settings.high_score += 200
@@ -214,22 +251,31 @@ class Enemy(Sprite):
             if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
                 self.change_y = 0
                 self.rect.y = 800 - self.rect.height
+        if self.type == "rkoopa":
+            if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
+                self.change_y = 0
+                self.rect.y = 800 - self.rect.height
         if self.type == "goomba" or self.type == "bgoomba":
             if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
                 self.change_y = 0
                 self.rect.y = 800 - self.rect.height
-        if self.type == "shell" or self.type == "bshell":
+        if self.type == "bowser":
+            if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
+                self.change_y = 0
+                self.rect.y = 800 - self.rect.height
+        if self.type == "shell" or self.type == "bshell" or self.type == "rshell":
             if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
                 self.change_y = 0
                 self.rect.y = 800 - self.rect.height
 
     def dead_enemy(self, music):
         self.image = pygame.image.load('assets/enemies/goomba_stomp.bmp')
-        self.state = "dead"
-        self.mov_left = False
-        self.mov_right = False
-        self.rect.y += 20
-        self.frames_ = ['assets/enemies/goomba_stomp.bmp']
+        if self.type != "pkoopa":
+            self.state = "dead"
+            self.mov_left = False
+            self.mov_right = False
+            self.rect.y += 20
+        self.frames_ = ['assets/special/blank.bmp']
         if self.type == "goomba":
             self.frames_ = ['assets/enemies/goomba_stomp.bmp', 'assets/enemies/goomba_stomp.bmp']
             self.timer.reset()
@@ -242,7 +288,6 @@ class Enemy(Sprite):
             self.type = "shell"
             self.frames_ = ['assets/enemies/shell_1_dead.bmp', 'assets/enemies/shell_1_dead.bmp']
             self.timer.reset()
-
         elif self.type == "shell":
             self.frames_ = ['assets/enemies/shell_1_dead.bmp', 'assets/enemies/shell_1_dead.bmp']
             self.deathTime = 5
@@ -255,8 +300,20 @@ class Enemy(Sprite):
             self.frames_ = ['assets/enemies/bshell_1_dead.bmp', 'assets/enemies/bshell_1_dead.bmp']
             self.deathTime = 5
             self.timer.reset()
+        if self.type == "rkoopa":
+            self.type = "rshell"
+            self.frames_ = ['assets/enemies/rshell_1_dead.bmp', 'assets/enemies/rshell_1_dead.bmp']
+            self.timer.reset()
+        elif self.type == "rshell":
+            self.frames_ = ['assets/enemies/rshell_1_dead.bmp', 'assets/enemies/rshell_1_dead.bmp']
+            self.deathTime = 5
+            self.timer.reset()
+        if self.type == "pkoopa":
+            self.type = "rkoopa"
+            self.frames_ = ['assets/enemies/rkoopa_1.bmp', 'assets/enemies/rkoopa_2.bmp']
+            self.timer.reset()
         self.timer.frames = self.frames_
-        self.timer.looponce = True
+        self.timer.looponce = False
         self.timer.reset()
         self.ai_settings.high_score += 200
         self.scores.prep_score()
